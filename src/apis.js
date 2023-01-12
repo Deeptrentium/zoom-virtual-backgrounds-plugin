@@ -1,6 +1,6 @@
-/* globals zoomSdk */
+import zoomSdk from '@zoom/appssdk'
 
-const invokeZoomAppsSdk = (api, setIsLoading) => () => {
+export const invokeZoomAppsSdk = (api, setIsLoading) => () => {
   setIsLoading(true)
   const { name, buttonName = '', options = null } = api
   const zoomAppsSdkApi = zoomSdk[name].bind(zoomSdk)
@@ -21,7 +21,7 @@ const invokeZoomAppsSdk = (api, setIsLoading) => () => {
 
 // New apis are constantly created and may not be included here
 // Please visit the Zoom Apps developer docs for comprehensive list
-const apis = [
+export const apis = [
   {
     name: 'setVirtualBackground',
     buttonName: 'Set virtual background',
@@ -31,5 +31,3 @@ const apis = [
     },
   },
 ]
-
-module.exports = { apis, invokeZoomAppsSdk }

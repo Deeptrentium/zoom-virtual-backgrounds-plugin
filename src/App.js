@@ -1,4 +1,5 @@
-/* globals zoomSdk */
+import zoomSdk from "@zoom/appssdk"
+
 import { useEffect, useState } from 'react'
 import { apis } from './apis'
 import SetupVB from './components/setupVB'
