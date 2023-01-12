@@ -1,6 +1,7 @@
 /* globals zoomSdk */
 
-const invokeZoomAppsSdk = (api) => () => {
+const invokeZoomAppsSdk = (api, setIsLoading) => () => {
+  setIsLoading(true)
   const { name, buttonName = '', options = null } = api
   const zoomAppsSdkApi = zoomSdk[name].bind(zoomSdk)
 
@@ -11,6 +12,7 @@ const invokeZoomAppsSdk = (api) => () => {
           clientResponse,
         )}`,
       )
+      setIsLoading(false)
     })
     .catch((clientError) => {
       console.log(`${buttonName || name} error: ${JSON.stringify(clientError)}`)
@@ -22,6 +24,7 @@ const invokeZoomAppsSdk = (api) => () => {
 const apis = [
   {
     name: 'setVirtualBackground',
+    buttonName: 'Set virtual background',
     options: {
       fileUrl:
         'https://images.unsplash.com/photo-1673379324638-1b0cc40f4bbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
