@@ -1,7 +1,7 @@
 /* globals zoomSdk */
 import { useEffect, useState } from 'react'
 import { apis } from './apis'
-import ApiScrollview from './components/ApiScrollview'
+import SetupVB from './components/setupVB'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -27,27 +27,6 @@ function App() {
             capabilities: [
               // apis demoed in the buttons
               ...apis.map((api) => api?.name), // IMPORTANT
-
-              // demo events
-              'onSendAppInvitation',
-              'onShareApp',
-              'onActiveSpeakerChange',
-              'onMeeting',
-
-              // connect api and event
-              'connect',
-              'onConnect',
-              'postMessage',
-              'onMessage',
-
-              // in-client api and event
-              'authorize',
-              'onAuthorized',
-              'promptAuthorize',
-              'getUserContext',
-              'onMyUserContextChange',
-              'sendAppInvitationToAllParticipants',
-              'sendAppInvitation',
             ],
             version: '0.16.0',
           })
@@ -95,7 +74,7 @@ function App() {
           : 'Configuring Zoom JavaScript SDK...'}
       </p>
 
-      <ApiScrollview />
+      <SetupVB />
     </div>
   )
 }

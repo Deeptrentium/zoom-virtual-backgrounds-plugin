@@ -1,7 +1,7 @@
 {
   "name": "za-reference-react",
   "version": "0.1.0",
-  "description": "Reference Zoom App built with ReactJS",
+  "description": "Zoom plugin for virtual background change",
   "private": true,
   "license": "MIT",
   "dependencies": {

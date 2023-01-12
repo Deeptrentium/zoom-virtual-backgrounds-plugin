@@ -1,10 +1,11 @@
 import { React, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import { apis, invokeZoomAppsSdk } from '../apis'
-import './ApiScrollview.css'
+import './SetupVB.css'
 
-function ApiScrollview() {
+function SetupVB() {
   const [imageUrl, setImageUrl] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleImageUrl = (e) => {
     setImageUrl(e.target.value)
@@ -22,15 +23,18 @@ function ApiScrollview() {
       <div className="api-buttons-list">
         {apis?.map((api) => (
           <Button
-            onClick={invokeZoomAppsSdk({
-              ...api,
-              options: { fileUrl: imageUrl },
-            })}
+            onClick={invokeZoomAppsSdk(
+              {
+                ...api,
+                options: { fileUrl: imageUrl },
+              },
+              setIsLoading,
+            )}
             className="api-button"
             key={api.buttonName || api.name}
           >
             {' '}
-            {api.buttonName || api.name}
+            {isLoading ? 'Loading...' : api.buttonName || api.name}
           </Button>
         ))}
       </div>
@@ -39,4 +43,4 @@ function ApiScrollview() {
   )
 }
 
-export default ApiScrollview
+export default SetupVB
